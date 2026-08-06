@@ -20,20 +20,20 @@ jobs:
       -  uses: actions/setup-node@v4
         with:
           node-version: 16
-      - name: npm instal and build webpack
+      - name: npm install and build webpack
         run: |
-            npm install
-            npm run build
-      - uses: actions/uplocad-artifact@v4
+          npm install
+          npm run build
+      - uses: actions/upload-artifact@v4
         with:
           name: webpack artifacts
           path: public/
 
-Build-Docker-Image:
-  runs-on: ubuntu-latest
-  needs: build
-  name: Build image and store in GitHub Container Registry
-  steps:
+  Build-Docker-Image:
+    runs-on: ubuntu-latest
+    needs: build
+    name: Build image and store in GitHub Container Registry
+    steps:
     - name: Checkout
       uses: actions/checkout@v4
 
